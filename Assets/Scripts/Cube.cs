@@ -18,7 +18,7 @@ public class Cube : MonoBehaviour
     {
         if (stared)
         {
-            GetComponent<Renderer>().material = materialFocused; ;
+            GetComponent<Renderer>().material = materialFocused;
         }
         else
         {
