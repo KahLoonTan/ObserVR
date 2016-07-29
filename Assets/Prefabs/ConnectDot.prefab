@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3ae951b2852534dbbfe50959534220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIdle: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  materialAlternate: {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
+  materialSelected: {fileID: 2100000, guid: 8b94b267d9841e74195326303518ba3f, type: 2}
 --- !u!135 &13563704
 SphereCollider:
   m_ObjectHideFlags: 1

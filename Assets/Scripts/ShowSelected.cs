@@ -3,21 +3,22 @@ using System.Collections;
 
 public class ShowSelected : MonoBehaviour {
 
-    public Material materialIdle;
-    public Material materialAlternate;
+    public Material materialSelected;
 
     private Selectable self;
+    private Material materialIdle;
 
     // Use this for initialization
     void Start () {
         self = GetComponent<Selectable>();
+        materialIdle = GetComponent<Renderer>().material;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (self.selected || self.connected)
         {
-            GetComponent<Renderer>().material = materialAlternate;
+            GetComponent<Renderer>().material = materialSelected;
         }
         else
         {
