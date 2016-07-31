@@ -4,18 +4,19 @@ using System.Collections.Generic;
 
 public class SelectionManager : Singleton<SelectionManager>
 {
+    public GameObject lineType;
     public List<GameObject> nodes = new List<GameObject>();
 
     private List<GameObject> lines = new List<GameObject>();
 
     // Use this for initialization
-    protected override void SingletonAwake()
+    protected override void SingletonAwake ()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    void Update ()
     {
         if (nodes.Any() && !nodes.Last().GetComponent<Selectable>().selected)
         {
@@ -23,14 +24,14 @@ public class SelectionManager : Singleton<SelectionManager>
         }
     }
 
-    public void AddToSelection(GameObject obj)
+    public void AddToSelection (GameObject obj)
     {
         obj.GetComponent<Selectable>().connected = true;
         nodes.Add(obj);
-        AddConnectionLine();
+        CreateConnectionLine();
     }
 
-    public void ClearSelection()
+    public void ClearSelection ()
     {
         foreach(GameObject sel in nodes)
         {
@@ -45,23 +46,31 @@ public class SelectionManager : Singleton<SelectionManager>
         lines.Clear();
     }
 
-    private void AddConnectionLine()
+    public bool ValidateSelection (List<string> a)
+    {
+        if (a.Count > nodes.Count) return false;
+        for (int i = 0; i < a.Count; ++i)
+        {
+            if (nodes[i].name != a[i])
+                return false;
+        }
+        return true;
+    }
+
+    private void CreateConnectionLine ()
     {
         if (nodes.Count > 1)
         {
             GameObject startNode = nodes[nodes.Count - 2];
             GameObject endNode = nodes[nodes.Count - 1];
             
-            GameObject connectionLine = new GameObject();
+            GameObject connectionLine = Instantiate(lineType);
             connectionLine.name = "Line (" + startNode.name + ") to (" + endNode.name + ")";
+            connectionLine.transform.parent = gameObject.transform;
             connectionLine.transform.position = startNode.transform.position;
-            connectionLine.AddComponent<LineRenderer>();
-            LineRenderer lr = connectionLine.GetComponent<LineRenderer>();
-            //connectionLine.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-            //connectionLine.SetColors(color, color);
-            lr.SetWidth(0.1f, 0.1f);
-            lr.SetPosition(0, startNode.transform.position);
-            lr.SetPosition(1, endNode.transform.position);
+
+            connectionLine.GetComponent<ConnectionLine>().start = startNode;
+            connectionLine.GetComponent<ConnectionLine>().end = endNode;
             lines.Add(connectionLine);
         }
     }

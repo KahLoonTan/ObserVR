@@ -18,7 +18,8 @@ public class ShowSelected : MonoBehaviour {
 	void Update () {
         if (self.selected || self.connected)
         {
-            GetComponent<Renderer>().material = materialSelected;
+            if (materialSelected != null)
+                GetComponent<Renderer>().material = materialSelected;
         }
         else
         {

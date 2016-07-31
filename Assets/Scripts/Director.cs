@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Director : MonoBehaviour {
@@ -9,20 +10,27 @@ public class Director : MonoBehaviour {
     public Transform target2;
     public Transform target3;
     public Transform target4;
-
     public AICharacterControl ai;
+
     private int currentTarget = -1;
+    private List<string> commands = new List<string>();
 
     // Use this for initialization
     void Start () {
         ai = character.GetComponent<AICharacterControl>();
-
+        commands.Add("Inspect");
+        commands.Add("Screen");
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetMouseButtonDown(0))
+	    if (SelectionManager.Instance.ValidateSelection(commands))
         {
+            ai.target = SelectionManager.Instance.nodes.Last().transform;
+            SelectionManager.Instance.ClearSelection();
+        }
+	    /*if (Input.GetMouseButtonDown(0))
+            {
             currentTarget++;
             currentTarget = currentTarget % 4;
             switch (currentTarget)
@@ -40,6 +48,6 @@ public class Director : MonoBehaviour {
                     ai.target = target4;
                     break;
             }
-        }
+        }*/
     }
 }
