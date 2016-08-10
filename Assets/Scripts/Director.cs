@@ -11,6 +11,9 @@ public class Director : MonoBehaviour {
     public Transform target3;
     public Transform target4;
     public AICharacterControl ai;
+    public GameObject orb;
+    public GameObject fireball;
+    public Material materialAttack;
 
     private int currentTarget = -1;
     private List<string> commands = new List<string>();
@@ -27,10 +30,10 @@ public class Director : MonoBehaviour {
 	    if (SelectionManager.Instance.ValidateSelection(commands))
         {
             ai.target = SelectionManager.Instance.nodes.Last().transform;
-            SelectionManager.Instance.ClearSelection();
+            //SelectionManager.Instance.ClearSelection();
         }
-	    /*if (Input.GetMouseButtonDown(0))
-            {
+	    if (Input.GetMouseButtonDown(0))
+        {
             currentTarget++;
             currentTarget = currentTarget % 4;
             switch (currentTarget)
@@ -48,6 +51,11 @@ public class Director : MonoBehaviour {
                     ai.target = target4;
                     break;
             }
-        }*/
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            fireball.SetActive(true);
+            orb.GetComponent<Renderer>().material = materialAttack;
+        }
     }
 }

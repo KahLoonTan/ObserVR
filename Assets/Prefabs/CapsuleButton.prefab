@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 426860}
   - 23: {fileID: 2324916}
   - 102: {fileID: 10247062}
+  - 122: {fileID: 12275864}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -50,7 +51,7 @@ GameObject:
   - 114: {fileID: 11457644}
   - 114: {fileID: 11416486}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +105,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23ad4c34103bb3340adc1c072a27246e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -168,12 +169,12 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4289592831
 --- !u!114 &11415966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13a78d854679d40865b3a627117170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0, z: 0}
+  startPos: {x: -10, y: 0, z: 0}
 --- !u!114 &11416486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3ae951b2852534dbbfe50959534220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialSelected: {fileID: 2100000, guid: 6fd64b31c5dea874cb694b6ebca24149, type: 2}
+  materialSelected: {fileID: 2100000, guid: ad2c5929fc09a7a448d50916036b766e, type: 2}
 --- !u!114 &11457644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +285,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stared: 0
+--- !u!122 &12275864
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166954}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279577404
+  m_Size: 2.85
 --- !u!136 &13633238
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -315,6 +327,78 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: startPos.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23ad4c34103bb3340adc1c072a27246e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Color.rgba
+      value: 4289592831
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectDistance.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGraphicAlpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EffectDistance.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size
+      value: 2.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: outlineColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: outlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: outlineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pixelSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: resolutionDependant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: doubleResolution
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

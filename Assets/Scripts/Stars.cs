@@ -12,7 +12,7 @@ public class Stars : MonoBehaviour {
         for (int i = 0; i < amount; ++i)
         {
             GameObject star = (GameObject)Instantiate(source);
-            star.name = "Star (" + (i + 1) + ")";
+            star.name = "Star";
             star.transform.parent = gameObject.transform;
 
             Vector3 direction = Random.onUnitSphere;

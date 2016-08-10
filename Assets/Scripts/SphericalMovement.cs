@@ -8,16 +8,11 @@ public class SphericalMovement : MonoBehaviour
     private float angle = 0.0f;
     private Vector3 direction = Vector3.one;
     private Quaternion rotation;
-
-    // Use this for initialization
-    void Start()
-    {
-        //
-    }
-
+    private bool isStationary = true;
+    
     void Update()
     {
-        if (rotation == null) return;
+        if (isStationary) return;
 
         direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
         UpdatePositionRotation();
@@ -26,6 +21,7 @@ public class SphericalMovement : MonoBehaviour
     public void SetRotation(Vector3 vec)
     {
         rotation = Quaternion.Euler(vec);
+        isStationary = false;
     }
 
     public void Translate(float x, float y)
@@ -48,7 +44,7 @@ public class SphericalMovement : MonoBehaviour
         {
             Vector3 upwards = transform.localPosition.normalized;
             Vector3 forward = Vector3.up;
-            //Vector3 forward = new Vector3(upwards.z, -upwards.x, -upwards.y);
+            //Vector3 forward = new Vector3(upwards.z, -upwards.x, -upwards.y); testing for better alignment failed
             transform.rotation = Quaternion.LookRotation(forward, upwards);
         }
         else
