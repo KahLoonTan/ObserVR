@@ -10,17 +10,19 @@ public class Director : MonoBehaviour {
     public Transform target2;
     public Transform target3;
     public Transform target4;
-    public AICharacterControl ai;
     public GameObject orb;
     public GameObject fireball;
     public Material materialAttack;
 
+    //private AICharacterControl ai;
+    private AISimonControl ai;
     private int currentTarget = -1;
     private List<string> commands = new List<string>();
 
     // Use this for initialization
     void Start () {
-        ai = character.GetComponent<AICharacterControl>();
+        //ai = character.GetComponent<AICharacterControl>();
+        ai = character.GetComponent<AISimonControl>();
         commands.Add("Inspect");
         commands.Add("Screen");
     }
